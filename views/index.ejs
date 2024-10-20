@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Statement Analyzer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+      .json-output {
+        white-space: pre-wrap;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upload Your Bank Statement</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="statement" required />
+      <button type="submit">Upload</button>
+    </form>
+
+    <% if (transactions) { %>
+    <h2>Extracted Transactions</h2>
+    <div class="json-output"><%= JSON.stringify(transactions, null, 2) %></div>
+    <% } %>
+  </body>
+</html>
